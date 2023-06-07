@@ -77,9 +77,17 @@ def get_logger(name, file=None, log_level="DEBUG"):
     logger = logging.getLogger(name)
     logger.propagate = False
 
+    # Check if handlers exist
+    handlers = logging.getLogger().handlers
+    for h in handlers:
+        if isinstance(h, logging.StreamHandler):
+            c_handler = h
+            break
+
     # Create handlers
-    c_handler = logging.StreamHandler(sys.stderr)
-    c_handler.setFormatter(ColoredFormatter())
+    if c_handler is None:
+        c_handler = logging.StreamHandler(sys.stderr)
+        c_handler.setFormatter(ColoredFormatter())
 
     # Create formatters and add it to handlers
     # c_format = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
