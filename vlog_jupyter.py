@@ -116,6 +116,8 @@ def get_logger(name, file=None, log_level="DEBUG"):
 
 
 def get_logger_simple(log_level=logging.DEBUG):
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
     logging.basicConfig(
         level=log_level,
         format='%(asctime)s - %(levelname)s - %(message)s'
