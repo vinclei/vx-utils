@@ -67,7 +67,7 @@ else:
     LOG_LEVEL = logging.INFO
 
 
-def get_logger(name, file=None, log_level=None):
+def get_logger(name, file=None, log_level="DEBUG"):
     global globalLogger
     if globalLogger is not None:
         return globalLogger
