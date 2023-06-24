@@ -67,7 +67,7 @@ class ColoredFormatter(Formatter):
 #     LOG_LEVEL = logging.INFO
 
 
-def get_logger(name, file=None, log_level="DEBUG"):
+def get_logger(name, file=None, log_level=logging.INFO):
     # global globalLogger
     # if globalLogger is not None:
     #     return globalLogger
@@ -115,7 +115,7 @@ def get_logger(name, file=None, log_level="DEBUG"):
     return logger
 
 
-def get_logger_simple(log_level=logging.DEBUG):
+def get_logger_simple(log_level=logging.INFO):
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     logging.basicConfig(
